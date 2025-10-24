@@ -8,7 +8,7 @@
 ## 📦 การติดตั้ง
 
 ```bash
-sudo wget https://github.com/cis-95/ciscl/releases/download/v1.0.0/ciscl
+sudo wget https://github.com/cis-95/ciscl/releases/download/v1.0.1/ciscl
 sudo chmod +x ciscl
 ```
 
