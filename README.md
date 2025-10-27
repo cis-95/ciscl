@@ -1,18 +1,18 @@
-# 🛡️ PAM Security Checker
+# 🛡️ Cis Check list
 
 > เครื่องมือตรวจสอบนโยบายความปลอดภัยของระบบ Linux
-> ตรวจเช็กการตั้งค่า SSH, Password Policy, การ Login ด้วย key, บัญชีผู้ใช้, และ IP Private
 
 ---
 
-## 📦 การติดตั้ง
+# 📦 การติดตั้ง
 
 ```bash
-sudo wget https://github.com/cis-95/ciscl/releases/download/v1.0.1/ciscl
+sudo wget https://github.com/cis-95/ciscl/releases/download/V1.0.2/ciscl
 sudo chmod +x ciscl
 ```
 
 ---
+# PAM
 
 ## 🔧 คำสั่งที่ใช้ได้
 
@@ -185,17 +185,46 @@ sudo ./ciscl pam all
 ## 🧾 ตัวอย่างผลการตรวจสอบรวม (`./ciscl pam all`)
 
 ```
-Hostname: host
+PAM Full Checklist Results:
+
+Hostname: RD-LoadTest-Ubuntu24-01
 Private IPs:
-enp6s18: 192.168.100.100
+enp6s18: 192.168.101.2
 
-Found 3 non-root users:
-   1. user1
-   2. user2
-   3. user3
+Found 2 non-root users:
+   1. devuser
+   2. test
 
-Password policy (Expired): Success
-Permit root login checklist: Success
-Log Login with Private Key: Success
-Log sudo su: Success
+Password policy (Expired) : Success
+
+Permit root login checklist : Success
+
+Log Login with Public Key : Success
+
+Log sudo su : Success
+```
+
+---
+# Nginx
+## 🔧 คำสั่งที่ใช้ได้
+
+| Command                                  | คำอธิบาย                                                                           |
+| ---------------------------------------- | ---------------------------------------------------------------------------------- |
+| `all`                                    | รันการตรวจสอบทั้งหมดตามลำดับ (ครบทุกส่วน)                                          |
+| `help` หรือ `-h`                         | แสดงวิธีใช้งานทั้งหมด                                                              |
+
+## 🧾 ตัวอย่างผลการตรวจสอบรวม (`./ciscl nginx all`)
+```
+Nginx Configuration Checklist Results:
+
+Reverse Proxy & Load Balancer Tuning
+Config checklist : Success
+Service File limit checklist : Success
+
+System Tuning
+Kernal checklist : Success
+OS user(www-data) Limit checklist : Success
+
+Access Log Retention
+Log 90 Days checklist : Success
 ```
